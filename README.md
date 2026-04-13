@@ -113,11 +113,3 @@ GitHub: [https://github.com/agungnugrahaid](https://github.com/agungnugrahaid)
 ## 📄 License
 
 This project is open-source and free to use for educational purposes.
-
----
-
-# 👍 You can customize:
-
-* Add features list (posts, categories, users, etc.)
-* Add screenshots later
-* Add architecture diagram (good for your NOC/DevOps profile)
