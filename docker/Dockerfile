@@ -24,7 +24,7 @@ RUN echo "Acquire::http::Pipeline-Depth 0;" > /etc/apt/apt.conf.d/99custom && \
 
 RUN apt-get update && apt-get upgrade -y \
     && mkdir -p /etc/apt/keyrings \
-    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin libpng-dev python3 dnsutils librsvg2-bin fswatch ffmpeg nano  \
+    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin libpng-dev python3 dnsutils librsvg2-bin fswatch ffmpeg nano libaio1 libaio-dev \
     && curl -sS 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb8dc7e53946656efbce4c1dd71daeaab4ad4cab6' | gpg --dearmor | tee /etc/apt/keyrings/ppa_ondrej_php.gpg > /dev/null \
     && echo "deb [signed-by=/etc/apt/keyrings/ppa_ondrej_php.gpg] https://ppa.launchpadcontent.net/ondrej/php/ubuntu noble main" > /etc/apt/sources.list.d/ppa_ondrej_php.list \
     && apt-get update \
@@ -76,6 +76,21 @@ RUN apt-get update && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.5
+
+# Install Oracle Instant Client and OCI8 PHP extension
+RUN mkdir -p /opt/oracle && cd /opt/oracle && \
+    wget https://download.oracle.com/otn_software/linux/instantclient/2313000/instantclient-basiclite-linux.x64-23.13.0.23.09.zip && \
+    unzip instantclient-basiclite-linux.x64-23.13.0.23.09.zip && \
+    rm instantclient-basiclite-linux.x64-23.13.0.23.09.zip && \
+    echo /opt/oracle/instantclient_23_13 > /etc/ld.so.conf.d/oracle-instantclient.conf && \
+    ldconfig
+
+RUN cd /tmp && \
+    pecl install oci8 && \
+    echo "extension=oci8.so" > /etc/php/8.5/cli/conf.d/20-oci8.ini && \
+    echo "extension=oci8.so" > /etc/php/8.5/fpm/conf.d/20-oci8.ini
+
+ENV LD_LIBRARY_PATH=/opt/oracle/instantclient_23_13:$LD_LIBRARY_PATH
 
 RUN userdel -r ubuntu
 RUN groupadd --force -g $WWWGROUP sail
