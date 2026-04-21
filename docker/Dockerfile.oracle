@@ -1,0 +1,24 @@
+FROM sail-8.5/app
+
+USER root
+
+# Install OCI8 from apt if available, otherwise compile from source
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    git \
+    wget \
+    && cd /tmp && \
+    git clone https://github.com/php/pecl-database-oci8.git && \
+    cd pecl-database-oci8 && \
+    git checkout PECL_OCI8_3_4 && \
+    phpize && \
+    ./configure --with-oci8=instantclient,/opt/oracle/instantclient_19_24 && \
+    make && \
+    make install && \
+    echo "extension=oci8.so" > /etc/php/8.5/cli/conf.d/20-oci8.ini && \
+    rm -rf /tmp/pecl-database-oci8 && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV LD_LIBRARY_PATH=/opt/oracle/instantclient_19_24:$LD_LIBRARY_PATH
+
+USER sail

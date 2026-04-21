@@ -1,0 +1,37 @@
+FROM sail-8.5/app
+
+USER root
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    libaio1t64 \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN ln -s /usr/lib/x86_64-linux-gnu/libaio.so.1t64 /usr/lib/x86_64-linux-gnu/libaio.so.1
+
+# Copy Oracle Instant Client (you already downloaded these before)
+COPY instantclient-basic*.zip /opt/oracle/
+COPY instantclient-sdk*.zip /opt/oracle/
+
+WORKDIR /opt/oracle
+
+RUN unzip instantclient-basic*.zip \
+    && unzip instantclient-sdk*.zip \
+    && rm *.zip
+
+# Set environment
+ENV LD_LIBRARY_PATH=/opt/oracle/instantclient_21_12
+ENV ORACLE_HOME=/opt/oracle/instantclient_21_12
+
+# Install OCI8
+RUN echo 'instantclient,/opt/oracle/instantclient_21_12' | pecl install oci8 \
+    && PHP_INI_DIR=$(php -i | grep "Scan this dir for additional .ini files" | awk '{print $NF}') \
+    && echo "extension=oci8.so" > $PHP_INI_DIR/20-oci8.ini
+
+# Load OCI8 on runtime
+RUN echo /opt/oracle/instantclient_21_12 > /etc/ld.so.conf.d/oracle.conf && ldconfig
+
+WORKDIR /var/www/html
+
+#USER sail
