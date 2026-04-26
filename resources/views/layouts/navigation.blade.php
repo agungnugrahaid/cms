@@ -24,9 +24,6 @@
                     <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
                         {{ __('Categories') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.*')">
-                        {{ __('Articles (Public)') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('admin.articles.index')" :active="request()->routeIs('admin.articles.*')">
                         {{ __('Manage Articles') }}
                     </x-nav-link>
@@ -34,7 +31,12 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden sm:flex sm:items-center sm:ms-6 gap-2">
+                <button onclick="toggleDarkMode()" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-all duration-200 p-2 rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined dark:hidden" style="font-size: 20px;">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:inline" style="font-size: 20px;">light_mode</span>
+                </button>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
@@ -94,9 +96,6 @@
             <x-responsive-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
                 {{ __('Categories') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.*')">
-                {{ __('Articles (Public)') }}
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.articles.index')" :active="request()->routeIs('admin.articles.*')">
                 {{ __('Manage Articles') }}
             </x-responsive-nav-link>
@@ -104,9 +103,15 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+            <div class="px-4 flex justify-between items-center">
+                <div>
+                    <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                </div>
+                <button onclick="toggleDarkMode()" class="text-gray-500 dark:text-gray-400 p-2 rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined dark:hidden" style="font-size: 20px;">dark_mode</span>
+                    <span class="material-symbols-outlined hidden dark:inline" style="font-size: 20px;">light_mode</span>
+                </button>
             </div>
 
             <div class="mt-3 space-y-1">

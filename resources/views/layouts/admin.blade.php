@@ -25,6 +25,16 @@
             } else {
                 document.documentElement.classList.remove('dark');
             }
+
+            function toggleDarkMode() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
         </script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
