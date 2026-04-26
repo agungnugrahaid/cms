@@ -1,27 +1,35 @@
-# 📘 CMS Learning Project (Laravel)
+# 🌐 GMEDIA NOC CMS
 
 ## 📖 Overview
 
-This project is a **Content Management System (CMS)** built using the Laravel framework.
-The main purpose of this repository is for **learning and experimenting with CMS development concepts**.
+This project is a custom **Content Management System (CMS)** built using the Laravel framework, specifically designed for the **GMEDIA Network Operations Center (NOC)**. 
+
+It serves as a hybrid dynamic application where the layout and structure are strictly maintained in code to preserve a premium, high-tech dark-mode aesthetic, while the core content, incident updates, and homepage highlights are driven entirely by a robust **Oracle Database**.
 
 ---
 
-## 🎯 Objectives
+## ✨ Key Features Implemented
 
-* Learn Laravel fundamentals (routing, controllers, models)
-* Understand CMS architecture
-* Practice CRUD operations
-* Explore authentication and user management
-* Experiment with frontend tools (Vite, Node.js)
+* **Oracle Database Integration:** Fully integrated with Oracle XE using the `yajra/laravel-oci8` driver.
+* **Dynamic Content Management:** 
+  * "Pages" table controls high-level titles and introductory content for the Home, About, and Contact pages.
+  * "Articles" and "Categories" tables manage the core updates feed.
+* **Dynamic Hero Carousel:** The homepage features a fully automated, cross-fading hero carousel that automatically pulls featured articles from the `home-carousel` database category.
+* **Intelligent Routing:** Employs SEO-friendly slug-based routing (e.g., `/articles/global-expansion-q3`) instead of traditional numeric IDs.
+* **Category Filtering:** The Updates page features a dynamic sidebar that automatically tallies article counts and filters content by category (News, Incident, Maintenance).
+* **Responsive & Adaptive UI:** 
+  * Built with Tailwind CSS, featuring a fully functional Dark/Light mode toggle that saves user preference.
+  * A custom-built mobile responsive "hamburger" navigation menu.
+  * Dynamic category-based UI coloring (e.g., Incident posts automatically receive red warning UI treatments).
 
 ---
 
 ## ⚙️ Tech Stack
 
-* **Backend:** PHP (Laravel)
-* **Frontend:** Blade / Vite / Node.js
-* **Database:** MySQL
+* **Backend:** PHP / Laravel
+* **Database:** Oracle XE
+* **Database Driver:** `yajra/laravel-oci8`
+* **Frontend:** Laravel Blade, Tailwind CSS, Vanilla JavaScript
 * **Environment:** Docker (Laravel Sail)
 
 ---
@@ -40,6 +48,7 @@ cd cms
 ```bash
 cp .env.example .env
 ```
+*Note: Ensure your `.env` is configured for Oracle (DB_CONNECTION=oracle, DB_HOST=oracle, DB_PORT=1521).*
 
 ### 3. Run using Laravel Sail
 
@@ -53,53 +62,24 @@ cp .env.example .env
 ./vendor/bin/sail artisan key:generate
 ```
 
-### 5. Run migrations
+### 5. Run Migrations & Seed Database
+
+To build the Oracle tables and populate the default Pages, Categories, and initial Carousel Articles:
 
 ```bash
-./vendor/bin/sail artisan migrate
+./vendor/bin/sail artisan migrate:fresh --seed
 ```
+*(If you encounter a LogMiner drop error during migrate:fresh due to Oracle system tables, run `./vendor/bin/sail artisan db:seed` directly).*
 
 ---
 
 ## 🌐 Access Application
 
-Open in browser:
+Open in your browser:
 
 ```
 http://localhost
 ```
-
-or:
-
-```
-http://<your-server-ip>
-```
-
----
-
-## 🧪 Development Commands
-
-```bash
-# Access container
-./vendor/bin/sail shell
-
-# Run Laravel commands
-./vendor/bin/sail artisan <command>
-
-# Install frontend dependencies
-./vendor/bin/sail npm install
-
-# Run Vite dev server
-./vendor/bin/sail npm run dev
-```
-
----
-
-## 📌 Notes
-
-* This project is **for learning purposes only**
-* Not intended for production use (yet)
-* Will be improved over time
 
 ---
 
