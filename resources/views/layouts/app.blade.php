@@ -122,6 +122,15 @@
                 localStorage.setItem('theme', 'dark');
             }
         }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
     </script>
     <style>
         .material-symbols-outlined {
@@ -165,16 +174,38 @@
             </nav>
             
             <!-- Trailing Action -->
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 md:gap-4">
                 <button onclick="toggleDarkMode()" class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 p-2 rounded-full flex items-center justify-center">
                     <span class="material-symbols-outlined dark:hidden" style="font-size: 20px;">dark_mode</span>
                     <span class="material-symbols-outlined hidden dark:inline" style="font-size: 20px;">light_mode</span>
                 </button>
-                <span class="font-['Inter'] antialiased text-sm font-medium text-blue-800 dark:text-blue-400 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant">
+                <span class="hidden lg:flex font-['Inter'] antialiased text-sm font-medium text-blue-800 dark:text-blue-400 items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="hidden md:inline">Network Status</span>
+                    <span>Network Status</span>
                 </span>
+                
+                <!-- Hamburger Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 p-2 rounded-md flex items-center justify-center">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-lg w-full absolute top-16 left-0 z-40">
+            <nav class="flex flex-col p-4 gap-2">
+                <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md {{ request()->is('/') ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400' : '' }}" href="{{ url('/') }}">Home</a>
+                <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md {{ request()->is('about') ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400' : '' }}" href="{{ url('/about') }}">About</a>
+                <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md {{ request()->is('articles*') ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400' : '' }}" href="{{ url('/articles') }}">Updates</a>
+                <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md {{ request()->is('contact') ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400' : '' }}" href="{{ url('/contact') }}">Contact</a>
+                
+                <div class="pt-4 mt-2 border-t border-slate-200 dark:border-slate-800 flex justify-center">
+                    <span class="font-['Inter'] antialiased text-sm font-medium text-blue-800 dark:text-blue-400 flex items-center justify-center gap-1.5 px-3 py-2 rounded-md bg-surface-container-low border border-outline-variant w-full">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Network Status</span>
+                    </span>
+                </div>
+            </nav>
         </div>
     </header>
 

@@ -4,8 +4,15 @@
 
 Route::get('/', function () {
     $page = \App\Models\Page::where('slug', 'home')->first();
-    $latestUpdates = \App\Models\Article::with('category')->orderBy('published_at', 'desc')->take(3)->get();
-    return view('public.home', compact('page', 'latestUpdates'));
+    $latestUpdates = \App\Models\Article::with('category')->whereHas('category', function($q) {
+        $q->where('slug', '!=', 'home-carousel');
+    })->orderBy('published_at', 'desc')->take(3)->get();
+    
+    $carouselItems = \App\Models\Article::with('category')->whereHas('category', function($q) {
+        $q->where('slug', 'home-carousel');
+    })->orderBy('published_at', 'desc')->take(4)->get();
+    
+    return view('public.home', compact('page', 'latestUpdates', 'carouselItems'));
 });
 
 Route::get('/about', function () {
