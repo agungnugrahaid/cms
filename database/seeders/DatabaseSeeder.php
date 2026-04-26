@@ -28,6 +28,10 @@ class DatabaseSeeder extends Seeder
             ['slug' => 'about'],
             ['title' => 'NOC Overview & Capabilities', 'content' => 'The core of our infrastructure resilience. Discover how GMEDIA\'s Network Operation Center maintains absolute uptime through rigorous monitoring, rapid incident response, and strict SLA compliance.']
         );
+        \App\Models\Page::firstOrCreate(
+            ['slug' => 'contact'],
+            ['title' => 'NOC Contact & Support', 'content' => 'Global Network Operations Center. For immediate critical incidents, please use the direct hotline numbers provided below. Standard inquiries will be addressed within standard SLAs.']
+        );
 
         $catNews = \App\Models\Category::firstOrCreate(['slug' => 'news'], ['name' => 'News']);
         $catMaintenance = \App\Models\Category::firstOrCreate(['slug' => 'maintenance'], ['name' => 'Maintenance']);

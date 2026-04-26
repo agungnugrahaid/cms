@@ -12,6 +12,11 @@ Route::get('/about', function () {
     return view('public.about', compact('page'));
 });
 
+Route::get('/contact', function () {
+    $page = \App\Models\Page::where('slug', 'contact')->first();
+    return view('public.contact', compact('page'));
+});
+
 Route::get('/status', function () {
     return view('public.status');
 });
