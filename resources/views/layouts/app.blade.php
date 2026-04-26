@@ -190,7 +190,7 @@
                 <!-- Authentication -->
                 <div class="hidden sm:flex items-center gap-2 border-l border-slate-200 dark:border-slate-800 pl-4 ml-2">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="font-['Inter'] antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 px-2 py-1 rounded-md transition-all duration-200">Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="font-['Inter'] antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 px-2 py-1 rounded-md transition-all duration-200">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="font-['Inter'] antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 px-2 py-1 rounded-md transition-all duration-200">Login</a>
                     @endauth
@@ -213,7 +213,7 @@
                 
                 <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-800">
                     @auth
-                        <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md" href="{{ url('/dashboard') }}">Dashboard</a>
+                        <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md" href="{{ route('dashboard') }}">Dashboard</a>
                     @else
                         <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md" href="{{ route('login') }}">Login</a>
                         @if (Route::has('register'))
