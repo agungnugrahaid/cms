@@ -4,7 +4,8 @@
 
 Route::get('/', function () {
     $page = \App\Models\Page::where('slug', 'home')->first();
-    return view('public.home', compact('page'));
+    $latestUpdates = \App\Models\Article::with('category')->orderBy('published_at', 'desc')->take(3)->get();
+    return view('public.home', compact('page', 'latestUpdates'));
 });
 
 Route::get('/about', function () {

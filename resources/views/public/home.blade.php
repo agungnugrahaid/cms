@@ -95,54 +95,35 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
-            <!-- Update Card 1: News -->
-            <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 rounded-xl p-md flex flex-col gap-sm hover:shadow-technical transition-shadow">
-                <div class="flex justify-between items-start">
-                    <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span> News
+            @forelse($latestUpdates as $update)
+            <div class="bg-surface-container-lowest dark:bg-slate-900 border {{ $update->category->slug === 'incident' ? 'border-error-container dark:border-red-900/50 shadow-[0_0_0_1px_rgba(186,26,26,0.1)] dark:shadow-[0_0_0_1px_rgba(186,26,26,0.3)]' : 'border-outline-variant dark:border-slate-800 hover:shadow-technical transition-shadow' }} rounded-xl p-md flex flex-col gap-sm relative overflow-hidden group">
+                @if($update->category->slug === 'incident')
+                    <div class="absolute top-0 left-0 w-1 h-full bg-error dark:bg-red-500"></div>
+                @endif
+                <div class="flex justify-between items-start {{ $update->category->slug === 'incident' ? 'pl-xs' : '' }}">
+                    <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase px-2 py-1 rounded-full 
+                        {{ $update->category->slug === 'incident' ? 'bg-error-container text-on-error-container dark:bg-red-900/30 dark:text-red-400' : 
+                          ($update->category->slug === 'maintenance' ? 'bg-yellow-50 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400' : 'bg-emerald-50 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400') }}">
+                        <span class="w-1.5 h-1.5 rounded-full {{ $update->category->slug === 'incident' ? 'bg-on-error-container dark:bg-red-400' : ($update->category->slug === 'maintenance' ? 'bg-yellow-600 dark:bg-yellow-400' : 'bg-emerald-600 dark:bg-emerald-400') }}"></span> 
+                        {{ $update->category->name }}
                     </span>
-                    <span class="font-code text-code text-outline dark:text-slate-500">10:45 AM</span>
+                    <span class="font-code text-code text-outline dark:text-slate-500">
+                        {{ $update->published_at ? $update->published_at->diffForHumans() : $update->created_at->diffForHumans() }}
+                    </span>
                 </div>
-                <div class="font-body-lg text-body-lg text-on-surface dark:text-slate-100 font-semibold leading-tight">
-                    New peering agreement finalized with EU regional transit provider.
+                <div class="font-body-lg text-body-lg text-on-surface dark:text-slate-100 font-semibold leading-tight {{ $update->category->slug === 'incident' ? 'pl-xs' : '' }}">
+                    {{ $update->title }}
                 </div>
-                <div class="mt-auto pt-sm flex items-center gap-xs text-primary dark:text-blue-400 font-label-md text-label-md cursor-pointer hover:underline">
-                    Read Details <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+                <div class="mt-auto pt-sm {{ $update->category->slug === 'incident' ? 'pl-xs text-error dark:text-red-400' : 'text-primary dark:text-blue-400' }} flex items-center gap-xs font-label-md text-label-md cursor-pointer group-hover:underline">
+                    <a href="{{ route('articles.show', $update) }}" class="flex items-center gap-xs">
+                        {{ $update->category->slug === 'incident' ? 'Post-Mortem' : ($update->category->slug === 'maintenance' ? 'View Schedule' : 'Read Details') }} 
+                        <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+                    </a>
                 </div>
             </div>
-            
-            <!-- Update Card 2: Maintenance -->
-            <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 rounded-xl p-md flex flex-col gap-sm hover:shadow-technical transition-shadow">
-                <div class="flex justify-between items-start">
-                    <span class="inline-flex items-center gap-1 bg-yellow-50 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
-                        <span class="w-1.5 h-1.5 rounded-full bg-yellow-600 dark:bg-yellow-400"></span> Maintenance
-                    </span>
-                    <span class="font-code text-code text-outline dark:text-slate-500">Yesterday</span>
-                </div>
-                <div class="font-body-lg text-body-lg text-on-surface dark:text-slate-100 font-semibold leading-tight">
-                    Scheduled core router firmware upgrade (NYC-01-CR). No expected impact.
-                </div>
-                <div class="mt-auto pt-sm flex items-center gap-xs text-primary dark:text-blue-400 font-label-md text-label-md cursor-pointer hover:underline">
-                    View Schedule <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
-                </div>
-            </div>
-            
-            <!-- Update Card 3: Incident -->
-            <div class="bg-surface-container-lowest dark:bg-slate-900 border border-error-container dark:border-red-900/50 rounded-xl p-md flex flex-col gap-sm shadow-[0_0_0_1px_rgba(186,26,26,0.1)] dark:shadow-[0_0_0_1px_rgba(186,26,26,0.3)] relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-1 h-full bg-error dark:bg-red-500"></div>
-                <div class="flex justify-between items-start pl-xs">
-                    <span class="inline-flex items-center gap-1 bg-error-container text-on-error-container dark:bg-red-900/30 dark:text-red-400 px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
-                        <span class="w-1.5 h-1.5 rounded-full bg-on-error-container dark:bg-red-400"></span> Incident
-                    </span>
-                    <span class="font-code text-code text-outline dark:text-slate-500">Oct 24</span>
-                </div>
-                <div class="font-body-lg text-body-lg text-on-surface dark:text-slate-100 font-semibold leading-tight pl-xs">
-                    [Resolved] Latency spikes observed on transatlantic submarine cable bundle A.
-                </div>
-                <div class="mt-auto pt-sm pl-xs flex items-center gap-xs text-error dark:text-red-400 font-label-md text-label-md cursor-pointer hover:underline">
-                    Post-Mortem <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
-                </div>
-            </div>
+            @empty
+                <div class="col-span-3 p-8 text-center text-slate-500 dark:text-slate-400">No recent updates available.</div>
+            @endforelse
         </div>
     </div>
 </main>
