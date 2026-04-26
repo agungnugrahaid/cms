@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = \App\Models\Category::withCount('articles')->get();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**

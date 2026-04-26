@@ -25,7 +25,10 @@
                         {{ __('Categories') }}
                     </x-nav-link>
                     <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.*')">
-                        {{ __('Articles') }}
+                        {{ __('Articles (Public)') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.articles.index')" :active="request()->routeIs('admin.articles.*')">
+                        {{ __('Manage Articles') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -92,7 +95,10 @@
                 {{ __('Categories') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.*')">
-                {{ __('Articles') }}
+                {{ __('Articles (Public)') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.articles.index')" :active="request()->routeIs('admin.articles.*')">
+                {{ __('Manage Articles') }}
             </x-responsive-nav-link>
         </div>
 

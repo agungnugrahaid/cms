@@ -28,6 +28,15 @@ class ArticleController extends Controller
     }
 
     /**
+     * Display a listing of the resource for admin.
+     */
+    public function adminIndex()
+    {
+        $articles = \App\Models\Article::with('category')->orderBy('created_at', 'desc')->paginate(20);
+        return view('admin.articles.index', compact('articles'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

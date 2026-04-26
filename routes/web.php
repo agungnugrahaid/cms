@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,22 +33,32 @@ Route::get('/status', function () {
     return view('public.status');
 });
 
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ArticleController;
+// Public Article Routes
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
-Route::resource('pages', PageController::class);
-Route::resource('categories', CategoryController::class);
-Route::resource('articles', ArticleController::class);
+// Redirect old dashboard to new admin dashboard
+Route::get('/dashboard', function() {
+    return redirect()->route('dashboard');
+});
 
-Route::get('/dashboard', function () {
-    $stats = [
-        'pages' => \App\Models\Page::count(),
-        'categories' => \App\Models\Category::count(),
-        'articles' => \App\Models\Article::count(),
-    ];
-    return view('dashboard', compact('stats'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Admin CRUD Routes
+Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        $stats = [
+            'pages' => \App\Models\Page::count(),
+            'categories' => \App\Models\Category::count(),
+            'articles' => \App\Models\Article::count(),
+        ];
+        return view('dashboard', compact('stats'));
+    })->name('dashboard');
+
+    Route::resource('pages', PageController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('articles', ArticleController::class)->except(['index', 'show']);
+    // We'll add a specific index for admin articles to avoid conflict
+    Route::get('/articles', [ArticleController::class, 'adminIndex'])->name('admin.articles.index');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
