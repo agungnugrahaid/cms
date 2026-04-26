@@ -37,9 +37,9 @@
             </p>
             
             <!-- CTA -->
-            <button class="bg-primary-container text-on-primary font-label-md text-base px-8 py-4 rounded-lg border border-transparent hover:bg-primary transition-all flex items-center gap-2 shadow-technical hover:shadow-lg hover:-translate-y-0.5">
+            <button class="bg-primary-container text-on-primary px-8 py-4 rounded-lg border border-transparent hover:bg-primary transition-all flex items-center gap-2 shadow-technical hover:shadow-lg hover:-translate-y-0.5">
                 <span class="material-symbols-outlined" style="font-size: 20px;">warning</span>
-                Report an Issue
+                <span class="font-bold">Report an Issue</span>
             </button>
         </div>
         
@@ -54,34 +54,34 @@
     <!-- Bento Grid: Quick Metrics Row -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
         <!-- Metric 1: Uptime -->
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center justify-between shadow-sm hover:border-primary transition-colors">
+        <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 rounded-xl p-md flex items-center justify-between shadow-sm hover:border-primary transition-colors">
             <div class="flex flex-col gap-xs">
-                <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Uptime (30d)</span>
-                <span class="font-h1 text-h1 text-on-surface">99.9%</span>
+                <span class="font-label-sm text-label-sm text-outline dark:text-slate-400 uppercase tracking-wider">Uptime (30d)</span>
+                <span class="font-h1 text-h1 text-on-surface dark:text-slate-100">99.9%</span>
             </div>
-            <div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-primary">
+            <div class="w-10 h-10 rounded bg-surface-container dark:bg-slate-800 flex items-center justify-center text-primary dark:text-blue-400">
                 <span class="material-symbols-outlined">network_check</span>
             </div>
         </div>
         
         <!-- Metric 2: Active Tickets -->
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center justify-between shadow-sm hover:border-primary transition-colors">
+        <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 rounded-xl p-md flex items-center justify-between shadow-sm hover:border-primary transition-colors">
             <div class="flex flex-col gap-xs">
-                <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Active Tickets</span>
-                <span class="font-h1 text-h1 text-on-surface">12</span>
+                <span class="font-label-sm text-label-sm text-outline dark:text-slate-400 uppercase tracking-wider">Active Tickets</span>
+                <span class="font-h1 text-h1 text-on-surface dark:text-slate-100">12</span>
             </div>
-            <div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-secondary-container">
+            <div class="w-10 h-10 rounded bg-surface-container dark:bg-slate-800 flex items-center justify-center text-secondary-container dark:text-yellow-400">
                 <span class="material-symbols-outlined">confirmation_number</span>
             </div>
         </div>
         
         <!-- Metric 3: Response Time -->
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center justify-between shadow-sm hover:border-primary transition-colors">
+        <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 rounded-xl p-md flex items-center justify-between shadow-sm hover:border-primary transition-colors">
             <div class="flex flex-col gap-xs">
-                <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Avg Response Time</span>
-                <span class="font-h1 text-h1 text-on-surface">5min</span>
+                <span class="font-label-sm text-label-sm text-outline dark:text-slate-400 uppercase tracking-wider">Avg Response Time</span>
+                <span class="font-h1 text-h1 text-on-surface dark:text-slate-100">5min</span>
             </div>
-            <div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-tertiary-container">
+            <div class="w-10 h-10 rounded bg-surface-container dark:bg-slate-800 flex items-center justify-center text-tertiary-container dark:text-purple-400">
                 <span class="material-symbols-outlined">timer</span>
             </div>
         </div>
@@ -89,54 +89,57 @@
     
     <!-- Latest Updates Section -->
     <div class="mt-sm flex flex-col gap-md">
-        <h3 class="font-h3 text-h3 text-on-surface border-b border-outline-variant pb-xs">Latest Updates</h3>
+        <div class="flex justify-between items-end border-b border-outline-variant dark:border-slate-800 pb-xs">
+            <h3 class="font-h3 text-h3 text-on-surface dark:text-slate-100">Latest Updates</h3>
+            <a href="{{ route('articles.index') }}" class="font-label-md text-label-md text-primary dark:text-blue-400 hover:underline">View All</a>
+        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
             <!-- Update Card 1: News -->
-            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-sm hover:shadow-technical transition-shadow">
+            <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 rounded-xl p-md flex flex-col gap-sm hover:shadow-technical transition-shadow">
                 <div class="flex justify-between items-start">
-                    <span class="inline-flex items-center gap-1 bg-tertiary-fixed text-on-tertiary-fixed px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
-                        <span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-fixed"></span> News
+                    <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span> News
                     </span>
-                    <span class="font-code text-code text-outline">10:45 AM</span>
+                    <span class="font-code text-code text-outline dark:text-slate-500">10:45 AM</span>
                 </div>
-                <div class="font-body-lg text-body-lg text-on-surface font-semibold leading-tight">
+                <div class="font-body-lg text-body-lg text-on-surface dark:text-slate-100 font-semibold leading-tight">
                     New peering agreement finalized with EU regional transit provider.
                 </div>
-                <div class="mt-auto pt-sm flex items-center gap-xs text-primary font-label-md text-label-md cursor-pointer hover:underline">
+                <div class="mt-auto pt-sm flex items-center gap-xs text-primary dark:text-blue-400 font-label-md text-label-md cursor-pointer hover:underline">
                     Read Details <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
                 </div>
             </div>
             
             <!-- Update Card 2: Maintenance -->
-            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-sm hover:shadow-technical transition-shadow">
+            <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 rounded-xl p-md flex flex-col gap-sm hover:shadow-technical transition-shadow">
                 <div class="flex justify-between items-start">
-                    <span class="inline-flex items-center gap-1 bg-secondary-fixed text-on-secondary-fixed px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
-                        <span class="w-1.5 h-1.5 rounded-full bg-on-secondary-fixed"></span> Maintenance
+                    <span class="inline-flex items-center gap-1 bg-yellow-50 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
+                        <span class="w-1.5 h-1.5 rounded-full bg-yellow-600 dark:bg-yellow-400"></span> Maintenance
                     </span>
-                    <span class="font-code text-code text-outline">Yesterday</span>
+                    <span class="font-code text-code text-outline dark:text-slate-500">Yesterday</span>
                 </div>
-                <div class="font-body-lg text-body-lg text-on-surface font-semibold leading-tight">
+                <div class="font-body-lg text-body-lg text-on-surface dark:text-slate-100 font-semibold leading-tight">
                     Scheduled core router firmware upgrade (NYC-01-CR). No expected impact.
                 </div>
-                <div class="mt-auto pt-sm flex items-center gap-xs text-primary font-label-md text-label-md cursor-pointer hover:underline">
+                <div class="mt-auto pt-sm flex items-center gap-xs text-primary dark:text-blue-400 font-label-md text-label-md cursor-pointer hover:underline">
                     View Schedule <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
                 </div>
             </div>
             
             <!-- Update Card 3: Incident -->
-            <div class="bg-surface-container-lowest border border-error-container rounded-xl p-md flex flex-col gap-sm shadow-[0_0_0_1px_rgba(186,26,26,0.1)] relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+            <div class="bg-surface-container-lowest dark:bg-slate-900 border border-error-container dark:border-red-900/50 rounded-xl p-md flex flex-col gap-sm shadow-[0_0_0_1px_rgba(186,26,26,0.1)] dark:shadow-[0_0_0_1px_rgba(186,26,26,0.3)] relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-error dark:bg-red-500"></div>
                 <div class="flex justify-between items-start pl-xs">
-                    <span class="inline-flex items-center gap-1 bg-error-container text-on-error-container px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
-                        <span class="w-1.5 h-1.5 rounded-full bg-on-error-container"></span> Incident
+                    <span class="inline-flex items-center gap-1 bg-error-container text-on-error-container dark:bg-red-900/30 dark:text-red-400 px-2 py-1 rounded-full font-label-sm text-label-sm uppercase">
+                        <span class="w-1.5 h-1.5 rounded-full bg-on-error-container dark:bg-red-400"></span> Incident
                     </span>
-                    <span class="font-code text-code text-outline">Oct 24</span>
+                    <span class="font-code text-code text-outline dark:text-slate-500">Oct 24</span>
                 </div>
-                <div class="font-body-lg text-body-lg text-on-surface font-semibold leading-tight pl-xs">
+                <div class="font-body-lg text-body-lg text-on-surface dark:text-slate-100 font-semibold leading-tight pl-xs">
                     [Resolved] Latency spikes observed on transatlantic submarine cable bundle A.
                 </div>
-                <div class="mt-auto pt-sm pl-xs flex items-center gap-xs text-error font-label-md text-label-md cursor-pointer hover:underline">
+                <div class="mt-auto pt-sm pl-xs flex items-center gap-xs text-error dark:text-red-400 font-label-md text-label-md cursor-pointer hover:underline">
                     Post-Mortem <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
                 </div>
             </div>

@@ -10,10 +10,21 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = \App\Models\Article::with('category')->orderBy('published_at', 'desc')->paginate(10);
-        return view('articles.index', compact('articles'));
+        $categories = \App\Models\Category::withCount('articles')->get();
+        
+        $query = \App\Models\Article::with('category')->orderBy('published_at', 'desc');
+        
+        if ($request->has('category')) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('slug', $request->category);
+            });
+        }
+        
+        $articles = $query->paginate(10)->withQueryString();
+        
+        return view('articles.index', compact('articles', 'categories'));
     }
 
     /**
