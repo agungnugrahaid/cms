@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GMEDIA NOC Contact</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ffb95a",
+                        "inverse-on-surface": "#f3f0f0",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "on-primary-fixed": "#001b3c",
+                        "on-tertiary-fixed-variant": "#004882",
+                        "tertiary-fixed-dim": "#a3c9ff",
+                        "surface": "#fbf9f8",
+                        "tertiary-container": "#005597",
+                        "secondary": "#845400",
+                        "tertiary-fixed": "#d3e4ff",
+                        "on-primary-container": "#a9c9ff",
+                        "inverse-primary": "#a7c8ff",
+                        "on-secondary-container": "#6a4300",
+                        "primary-container": "#02539e",
+                        "surface-variant": "#e4e2e1",
+                        "on-background": "#1b1c1c",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-container": "#feaa22",
+                        "inverse-surface": "#303030",
+                        "surface-tint": "#1c5faa",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#001c38",
+                        "on-primary": "#ffffff",
+                        "primary": "#003c75",
+                        "background": "#fbf9f8",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c2c6d3",
+                        "surface-container-high": "#eae7e7",
+                        "primary-fixed": "#d5e3ff",
+                        "error": "#ba1a1a",
+                        "outline": "#727782",
+                        "on-secondary-fixed": "#2a1800",
+                        "surface-container": "#f0eded",
+                        "on-tertiary-container": "#a5caff",
+                        "surface-bright": "#fbf9f8",
+                        "tertiary": "#003e70",
+                        "on-primary-fixed-variant": "#004788",
+                        "surface-container-low": "#f6f3f2",
+                        "on-surface-variant": "#424751",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "secondary-fixed": "#ffddb6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "1rem",
+                        "xs": "0.25rem",
+                        "xl": "2rem",
+                        "margin": "1.5rem",
+                        "sm": "0.5rem",
+                        "lg": "1.5rem",
+                        "gutter": "1rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "code": ["monospace"],
+                        "body-lg": ["Inter"],
+                        "h3": ["Inter"],
+                        "h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["13px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "code": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tech-shadow {
+            box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- Shared Component: TopNavBar -->
+<header class="bg-white dark:bg-slate-900 font-['Inter'] antialiased text-sm font-medium w-full top-0 border-b border-slate-200 dark:border-slate-800 shadow-sm sticky z-50">
+<div class="flex justify-between items-center h-16 w-full px-6 lg:px-12 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<div class="text-xl font-black tracking-tighter text-blue-900 dark:text-white">GMEDIA</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-2 py-1 rounded" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-2 py-1 rounded" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-2 py-1 rounded" href="#">Updates</a>
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-2 py-1" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center">
+<button class="text-blue-800 dark:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-4 py-2 rounded-md border border-slate-200 dark:border-slate-700 text-xs uppercase tracking-wider font-bold">Network Status</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-6 lg:px-12 py-12">
+<!-- Page Header -->
+<div class="mb-10">
+<h1 class="font-h1 text-h1 text-on-background mb-2">NOC Contact &amp; Support</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Global Network Operations Center. For immediate critical incidents, please use the direct hotline numbers provided below. Standard inquiries will be addressed within standard SLAs.
+            </p>
+</div>
+<!-- Two Column Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Contact Form -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-[12px] tech-shadow overflow-hidden">
+<div class="border-b border-outline-variant px-6 py-4 bg-surface-container-low flex items-center justify-between">
+<h2 class="font-h3 text-h3 text-on-background">Submit Support Ticket</h2>
+<div class="flex items-center gap-2 bg-green-100/50 px-3 py-1 rounded-full border border-green-200">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600 block"></span>
+<span class="font-label-sm text-label-sm text-green-800 uppercase">System Online</span>
+</div>
+</div>
+<div class="p-6">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block" for="name">Full Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2.5 font-body-md text-body-md text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed transition-colors" id="name" placeholder="e.g. Jane Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block" for="email">Corporate Email</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2.5 font-body-md text-body-md text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed transition-colors" id="email" placeholder="jane.doe@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block" for="subject">Incident Subject</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2.5 font-body-md text-body-md text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed transition-colors" id="subject" placeholder="Brief description of the issue" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant block" for="message">Detailed Message / Trace Route</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2.5 font-code text-code text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed transition-colors" id="message" placeholder="Provide technical details, IPs, or error logs..." rows="5"></textarea>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">lock</span> Secure Transmission
+                                </span>
+<button class="bg-primary-container text-on-primary px-6 py-2.5 rounded-md font-label-md text-label-md hover:bg-primary transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span> Submit Ticket
+                                </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Right Column: Info & Hotlines -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Direct Hotlines Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-[12px] tech-shadow overflow-hidden">
+<div class="border-b border-outline-variant px-6 py-4 bg-surface-container-low">
+<h2 class="font-h3 text-h3 text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-error">emergency</span> Direct Hotlines
+                        </h2>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-start gap-4 p-3 rounded-lg hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant">
+<div class="bg-error-container text-on-error-container p-2 rounded-md">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-background uppercase mb-1">Severity 1 (Outage)</h3>
+<p class="font-h2 text-h2 text-primary-container">+1 (800) 555-0199</p>
+<p class="font-label-sm text-label-sm text-outline mt-1">24/7/365 - Requires active circuit ID</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant w-full"></div>
+<div class="flex items-start gap-4 p-3 rounded-lg hover:bg-surface-container-low transition-colors border border-transparent hover:border-outline-variant">
+<div class="bg-secondary-container text-on-secondary-container p-2 rounded-md">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-background uppercase mb-1">Standard Support</h3>
+<p class="font-h3 text-h3 text-on-surface-variant">+1 (800) 555-0100</p>
+<p class="font-label-sm text-label-sm text-outline mt-1">Mon-Fri, 08:00 - 18:00 UTC</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Physical Address Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-[12px] tech-shadow overflow-hidden">
+<div class="h-32 w-full bg-surface-variant relative overflow-hidden">
+<img alt="Clean white abstract map with blue network nodes and lines representing global internet connectivity" class="w-full h-full object-cover opacity-50 mix-blend-multiply" data-alt="Clean white abstract map with blue network nodes and lines representing global internet connectivity" data-location="Global NOC Center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUUqFfGYfNnX0FewzsylXKNTsP9ApS229MWH-huQQAOShosSCPaBitxTKGM0Afcxv5Ul5MRPvrPl6XyGrnpUdCNXQWTQHPz6vhqx93BZa8RQ2bi__z_4YCO1ENlKZJYK5M-X-jaURmRRCy4XrRn5OSMfy-74UOfbCv4CHDXMgP5e4VvF7NaHKAR009cIpU-Xz7wJoxHT5mvF6dqhJNTxOtUmttuAtgQPWzCMco5euoia5FYIL5qG48uUsJdxIG7WoXd3LlE59UoQ4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+<div class="p-6 relative z-10 -mt-8">
+<div class="bg-surface-container-lowest border border-outline-variant inline-block p-2 rounded-lg shadow-sm mb-4">
+<span class="material-symbols-outlined text-primary-container text-[24px] block">business</span>
+</div>
+<h2 class="font-h3 text-h3 text-on-background mb-2">Global NOC Center</h2>
+<address class="font-body-md text-body-md text-on-surface-variant not-italic space-y-1">
+                            100 Data Drive, Suite 500<br/>
+                            Tech District<br/>
+                            San Jose, CA 95113<br/>
+                            United States
+                        </address>
+<div class="mt-4 pt-4 border-t border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">mail</span>
+<a class="font-label-md text-label-md text-primary-container hover:underline" href="mailto:noc@gmedia.net">noc@gmedia.net</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 font-['Inter'] text-xs uppercase tracking-wider full-width border-t border-slate-200 dark:border-slate-800 mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full py-12 px-6 lg:px-12 max-w-[1440px] mx-auto items-center">
+<div class="text-lg font-bold text-slate-900 dark:text-slate-100">
+                GMEDIA
+            </div>
+<div class="flex flex-wrap gap-4 md:justify-center">
+<a class="text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline transition-all" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline transition-all" href="#">NOC Documentation</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline transition-all" href="#">24/7 Support</a>
+</div>
+<div class="text-slate-500 dark:text-slate-500 md:text-right">
+                © 2024 GMEDIA ISP. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

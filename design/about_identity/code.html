@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GMEDIA NOC - About</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ffb95a",
+                      "inverse-on-surface": "#f3f0f0",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#643f00",
+                      "on-primary-fixed": "#001b3c",
+                      "on-tertiary-fixed-variant": "#004882",
+                      "tertiary-fixed-dim": "#a3c9ff",
+                      "surface": "#fbf9f8",
+                      "tertiary-container": "#005597",
+                      "secondary": "#845400",
+                      "tertiary-fixed": "#d3e4ff",
+                      "on-primary-container": "#a9c9ff",
+                      "inverse-primary": "#a7c8ff",
+                      "on-secondary-container": "#6a4300",
+                      "primary-container": "#02539e",
+                      "surface-variant": "#e4e2e1",
+                      "on-background": "#1b1c1c",
+                      "surface-dim": "#dcd9d9",
+                      "secondary-container": "#feaa22",
+                      "inverse-surface": "#303030",
+                      "surface-tint": "#1c5faa",
+                      "primary-fixed-dim": "#a7c8ff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#001c38",
+                      "on-primary": "#ffffff",
+                      "primary": "#003c75",
+                      "background": "#fbf9f8",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c2c6d3",
+                      "surface-container-high": "#eae7e7",
+                      "primary-fixed": "#d5e3ff",
+                      "error": "#ba1a1a",
+                      "outline": "#727782",
+                      "on-secondary-fixed": "#2a1800",
+                      "surface-container": "#f0eded",
+                      "on-tertiary-container": "#a5caff",
+                      "surface-bright": "#fbf9f8",
+                      "tertiary": "#003e70",
+                      "on-primary-fixed-variant": "#004788",
+                      "surface-container-low": "#f6f3f2",
+                      "on-surface-variant": "#424751",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#1b1c1c",
+                      "surface-container-highest": "#e4e2e1",
+                      "secondary-fixed": "#ffddb6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "1rem",
+                      "xs": "0.25rem",
+                      "xl": "2rem",
+                      "margin": "1.5rem",
+                      "sm": "0.5rem",
+                      "lg": "1.5rem",
+                      "gutter": "1rem"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "h1": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "code": ["monospace"],
+                      "body-lg": ["Inter"],
+                      "h3": ["Inter"],
+                      "h2": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["13px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                      "code": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                      "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-['Inter'] antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-white dark:bg-slate-900 docked full-width top-0 border-b border-slate-200 dark:border-slate-800 shadow-sm sticky z-50">
+<div class="flex justify-between items-center h-16 w-full px-6 lg:px-12 max-w-[1440px] mx-auto">
+<!-- Brand -->
+<div class="flex items-center gap-2">
+<span class="text-xl font-black tracking-tighter text-blue-900 dark:text-white">GMEDIA</span>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex gap-8">
+<a class="font-['Inter'] antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-3 py-2 rounded-md" href="#">Home</a>
+<a class="font-['Inter'] antialiased text-sm font-medium text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 opacity-80 scale-[0.98] px-3 pt-2" href="#">About</a>
+<a class="font-['Inter'] antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-3 py-2 rounded-md" href="#">Updates</a>
+<a class="font-['Inter'] antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-3 py-2 rounded-md" href="#">Contact</a>
+</nav>
+<!-- Trailing Action -->
+<div class="flex items-center">
+<button class="font-['Inter'] antialiased text-sm font-medium text-blue-800 dark:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 px-4 py-2 border border-blue-200 dark:border-blue-800 rounded">
+                    Network Status
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow w-full max-w-[1440px] mx-auto px-6 lg:px-12 py-12">
+<!-- Page Header -->
+<div class="mb-12 border-b border-outline-variant pb-6">
+<h1 class="font-h1 text-h1 text-on-background">NOC Overview &amp; Capabilities</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-3xl">
+                The core of our infrastructure resilience. Discover how GMEDIA's Network Operation Center maintains absolute uptime through rigorous monitoring, rapid incident response, and strict SLA compliance.
+            </p>
+</div>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter lg:gap-12">
+<!-- Left Column: Services Description -->
+<div class="flex flex-col gap-6">
+<!-- Service Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col gap-4">
+<div class="flex items-center gap-3 border-b border-surface-variant pb-3">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<h3 class="font-h3 text-h3 text-on-background">24/7 Monitoring</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Continuous surveillance of all critical network nodes, edge devices, and core routing infrastructure. Our automated systems detect latency anomalies and packet loss before they impact end-user experience, providing real-time telemetry to our engineering teams.
+                    </p>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col gap-4">
+<div class="flex items-center gap-3 border-b border-surface-variant pb-3">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="font-h3 text-h3 text-on-background">Incident Handling</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Structured, protocol-driven response to network events. Our Tier 1 through Tier 3 NOC analysts utilize advanced diagnostics to isolate faults, route traffic through redundant pathways, and coordinate with field technicians for rapid physical layer restoration.
+                    </p>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col gap-4">
+<div class="flex items-center gap-3 border-b border-surface-variant pb-3">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<h3 class="font-h3 text-h3 text-on-background">SLA Management</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Rigorous enforcement of Service Level Agreements. We maintain detailed historical logs of network performance metrics, providing transparent reporting on uptime guarantees, mean time to repair (MTTR), and jitter/latency thresholds for enterprise clients.
+                    </p>
+</div>
+</div>
+<!-- Right Column: Visual / Technical Map Placeholder -->
+<div class="flex flex-col gap-6">
+<!-- Large Image Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden relative h-[400px] lg:h-[500px]">
+<img alt="Network Operation Center Dashboard" class="absolute inset-0 w-full h-full object-cover opacity-90" data-alt="high contrast digital dashboard showing global network routing paths with glowing blue lines connecting nodes over a dark blue world map, technical overlay, professional data visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArWfQ6CqvkBU-n4b6AKjXHrS5vQBy8O__aB_9EVFkVVD-xuUFjB7X0a3TPlQUhbqHYJMuC8OdJ20WOoj1LXM0SLIQWsWIYK17X_MLaPi-Q16fS_lGYpagpl-ZKI2rT6FL8tpqXq3u3NaeWiZsxwuIdwiAqyLDGn5iXCWuLZmLLHAsgYeyx-V9w-MFuzMYRSbVAQMCdYlQtU9FmVp0L47ODf1iB790Ma2b--u_HKzIeM35_Qz0Disd19KUM8uPe3QRf6HLjJCOdyUM"/>
+<!-- Overlay for Technical Feel -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent flex flex-col justify-end p-6">
+<div class="bg-surface-container-lowest/95 backdrop-blur border border-outline-variant rounded-lg p-4 max-w-sm">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface">Global Node Status</span>
+<div class="flex items-center gap-1 bg-green-500/10 px-2 py-1 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+<span class="font-label-sm text-label-sm text-green-700">OPTIMAL</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-4">
+<div>
+<div class="font-label-sm text-label-sm text-outline uppercase mb-1">Active Routes</div>
+<div class="font-code text-code text-primary font-medium">84,291</div>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-outline uppercase mb-1">Current Load</div>
+<div class="font-code text-code text-primary font-medium">32.4 Tbps</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Small Stats Row -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Core Uptime (YTD)</span>
+<span class="font-h3 text-h3 text-primary-container">99.999%</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Avg MTTR</span>
+<span class="font-h3 text-h3 text-primary-container">&lt; 15m</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-slate-50 dark:bg-slate-950 full-width border-t border-slate-200 dark:border-slate-800 flat no shadows mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full py-12 px-6 lg:px-12 max-w-[1440px] mx-auto Passive display with high-contrast utility focus">
+<!-- Brand & Copyright -->
+<div class="flex flex-col gap-2">
+<span class="text-lg font-bold text-slate-900 dark:text-slate-100">GMEDIA</span>
+<span class="font-['Inter'] text-xs uppercase tracking-wider text-slate-500 dark:text-slate-500">
+                    © 2024 GMEDIA ISP. All rights reserved.
+                </span>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col gap-3">
+<a class="font-['Inter'] text-xs uppercase tracking-wider text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-wider text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline transition-all" href="#">Terms of Service</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col gap-3">
+<a class="font-['Inter'] text-xs uppercase tracking-wider text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline transition-all" href="#">NOC Documentation</a>
+<a class="font-['Inter'] text-xs uppercase tracking-wider text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline transition-all" href="#">24/7 Support</a>
+</div>
+</div>
+</footer>
+</body></html>
