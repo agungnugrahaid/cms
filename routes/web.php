@@ -21,3 +21,11 @@ Route::get('/status', function () {
 Route::get('/kb', function () {
     return view('kb.index');
 });
+
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ArticleController;
+
+Route::resource('pages', PageController::class);
+Route::resource('categories', CategoryController::class);
+Route::resource('articles', ArticleController::class);
