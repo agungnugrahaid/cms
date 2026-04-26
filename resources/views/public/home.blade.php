@@ -19,7 +19,7 @@
                     <div class="relative z-20 flex flex-col items-center max-w-4xl mx-auto w-full">
                         <!-- Category -->
                         @php
-                            $catColor = $item->category->slug === 'incident' ? 'red' : ($item->category->slug === 'maintenance' ? 'yellow' : 'emerald');
+                            $catColor = $item->category->color ?? 'blue';
                         @endphp
                         <div class="inline-flex items-center gap-2 bg-{{ $catColor }}-500/10 border border-{{ $catColor }}-500/20 text-{{ $catColor }}-400 px-4 py-1.5 rounded-full font-label-md text-sm mb-8 shadow-sm backdrop-blur-sm">
                             <span class="w-2.5 h-2.5 rounded-full bg-{{ $catColor }}-500 {{ $catColor === 'emerald' ? 'animate-pulse' : '' }}"></span>
@@ -130,15 +130,12 @@
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
             @forelse($latestUpdates as $update)
-            <div class="bg-surface-container-lowest dark:bg-slate-900 border {{ $update->category->slug === 'incident' ? 'border-error-container dark:border-red-900/50 shadow-[0_0_0_1px_rgba(186,26,26,0.1)] dark:shadow-[0_0_0_1px_rgba(186,26,26,0.3)]' : 'border-outline-variant dark:border-slate-800 hover:shadow-technical transition-shadow' }} rounded-xl p-md flex flex-col gap-sm relative overflow-hidden group">
-                @if($update->category->slug === 'incident')
-                    <div class="absolute top-0 left-0 w-1 h-full bg-error dark:bg-red-500"></div>
-                @endif
-                <div class="flex justify-between items-start {{ $update->category->slug === 'incident' ? 'pl-xs' : '' }}">
+            <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 hover:shadow-technical transition-shadow rounded-xl p-md flex flex-col gap-sm relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-{{ $update->category->color ?? 'blue' }}-500"></div>
+                <div class="flex justify-between items-start pl-xs">
                     <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase px-2 py-1 rounded-full 
-                        {{ $update->category->slug === 'incident' ? 'bg-error-container text-on-error-container dark:bg-red-900/30 dark:text-red-400' : 
-                          ($update->category->slug === 'maintenance' ? 'bg-yellow-50 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400' : 'bg-emerald-50 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400') }}">
-                        <span class="w-1.5 h-1.5 rounded-full {{ $update->category->slug === 'incident' ? 'bg-on-error-container dark:bg-red-400' : ($update->category->slug === 'maintenance' ? 'bg-yellow-600 dark:bg-yellow-400' : 'bg-emerald-600 dark:bg-emerald-400') }}"></span> 
+                        bg-{{ $update->category->color ?? 'blue' }}-50 text-{{ $update->category->color ?? 'blue' }}-800 dark:bg-{{ $update->category->color ?? 'blue' }}-900/30 dark:text-{{ $update->category->color ?? 'blue' }}-400">
+                        <span class="w-1.5 h-1.5 rounded-full bg-{{ $update->category->color ?? 'blue' }}-600 dark:bg-{{ $update->category->color ?? 'blue' }}-400"></span> 
                         {{ $update->category->name }}
                     </span>
                     <span class="font-code text-code text-outline dark:text-slate-500">
