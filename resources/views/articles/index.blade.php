@@ -16,12 +16,12 @@
             <div class="flex flex-col gap-1">
                 <a href="{{ route('articles.index') }}" class="flex items-center justify-between px-3 py-2 {{ !request('category') ? 'bg-primary-container text-on-primary' : 'text-on-surface-variant dark:text-slate-300 hover:bg-surface-container dark:hover:bg-slate-800 hover:text-on-surface dark:hover:text-slate-100' }} rounded-md font-label-md text-label-md transition-colors w-full text-left">
                     <span>All Updates</span>
-                    <span class="{{ !request('category') ? 'bg-primary' : 'bg-surface-container-high dark:bg-slate-800 group-hover:bg-surface-variant dark:group-hover:bg-slate-700' }} px-2 py-0.5 rounded-full text-[10px]">{{ \App\Models\Article::count() }}</span>
+                    <span class="{{ !request('category') ? 'bg-primary' : 'bg-surface-container-high dark:bg-slate-800 group-hover:bg-surface-variant dark:group-hover:bg-slate-700' }} px-2 py-0.5 rounded-full text-[10px]">{{ $totalCount }}</span>
                 </a>
                 
                 @foreach($categories as $category)
                     @php
-                        $colorClass = $category->slug === 'incident' ? 'red' : ($category->slug === 'maintenance' ? 'yellow' : 'emerald');
+                        $colorClass = $category->color ?? 'blue';
                         $isActive = request('category') === $category->slug;
                     @endphp
                     <a href="{{ route('articles.index', ['category' => $category->slug]) }}" class="flex items-center justify-between px-3 py-2 {{ $isActive ? 'bg-primary-container text-on-primary' : 'text-on-surface-variant dark:text-slate-300 hover:bg-surface-container dark:hover:bg-slate-800 hover:text-on-surface dark:hover:text-slate-100' }} rounded-md font-label-md text-label-md transition-colors w-full text-left group">
@@ -40,14 +40,13 @@
     <div class="col-span-12 md:col-span-9 lg:col-span-10 flex flex-col gap-4">
         @forelse($articles as $article)
             <div class="bg-surface-container-lowest dark:bg-slate-900 border border-outline-variant dark:border-slate-800 rounded-xl p-5 hover:border-primary transition-colors group relative overflow-hidden">
-                <div class="absolute left-0 top-0 bottom-0 w-1 {{ $article->category->slug === 'incident' ? 'bg-red-500' : ($article->category->slug === 'maintenance' ? 'bg-yellow-500' : 'bg-emerald-500') }}"></div>
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-{{ $article->category->color ?? 'blue' }}-500"></div>
                 <div class="flex flex-col md:flex-row gap-4 items-start md:items-center">
                     <div class="flex-grow">
                         <div class="flex items-center gap-3 mb-2">
                             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm text-label-sm border 
-                                {{ $article->category->slug === 'incident' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800' : 
-                                  ($article->category->slug === 'maintenance' ? 'bg-yellow-50 text-yellow-800 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-400 dark:border-yellow-800' : 'bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800') }}">
-                                <span class="w-1.5 h-1.5 rounded-full {{ $article->category->slug === 'incident' ? 'bg-red-600' : ($article->category->slug === 'maintenance' ? 'bg-yellow-600' : 'bg-emerald-600') }}"></span>
+                                bg-{{ $article->category->color ?? 'blue' }}-50 text-{{ $article->category->color ?? 'blue' }}-700 border-{{ $article->category->color ?? 'blue' }}-200 dark:bg-{{ $article->category->color ?? 'blue' }}-900/30 dark:text-{{ $article->category->color ?? 'blue' }}-400 dark:border-{{ $article->category->color ?? 'blue' }}-800">
+                                <span class="w-1.5 h-1.5 rounded-full bg-{{ $article->category->color ?? 'blue' }}-600"></span>
                                 {{ strtoupper($article->category->name ?? 'UPDATE') }}
                             </span>
                             <span class="text-on-surface-variant dark:text-slate-400 text-sm flex items-center gap-1">

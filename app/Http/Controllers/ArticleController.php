@@ -12,9 +12,20 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = \App\Models\Category::withCount('articles')->get();
+        // Exclude 'home-carousel' category from the sidebar list and only count published articles
+        $categories = \App\Models\Category::withCount(['articles' => function ($query) {
+            $query->where('is_published', true);
+        }])
+            ->where('slug', '!=', 'home-carousel')
+            ->get();
         
-        $query = \App\Models\Article::with('category')->orderBy('published_at', 'desc');
+        // Exclude articles from 'home-carousel' unless specifically filtered by it (though we hide the link)
+        $query = \App\Models\Article::with('category')
+            ->whereHas('category', function ($q) {
+                $q->where('slug', '!=', 'home-carousel');
+            })
+            ->where('is_published', true)
+            ->orderBy('published_at', 'desc');
         
         if ($request->has('category')) {
             $query->whereHas('category', function ($q) use ($request) {
@@ -24,7 +35,12 @@ class ArticleController extends Controller
         
         $articles = $query->paginate(10)->withQueryString();
         
-        return view('articles.index', compact('articles', 'categories'));
+        $totalCount = \App\Models\Article::where('is_published', true)
+            ->whereHas('category', function ($q) {
+                $q->where('slug', '!=', 'home-carousel');
+            })->count();
+        
+        return view('articles.index', compact('articles', 'categories', 'totalCount'));
     }
 
     /**
@@ -61,9 +77,7 @@ class ArticleController extends Controller
         ]);
 
         $validated['is_published'] = $request->has('is_published');
-        if ($validated['is_published'] && !$validated['published_at']) {
-            $validated['published_at'] = now();
-        }
+        $validated['published_at'] = $request->published_at ?? ($validated['is_published'] ? now() : null);
 
         Article::create($validated);
 
@@ -103,6 +117,9 @@ class ArticleController extends Controller
         ]);
 
         $validated['is_published'] = $request->has('is_published');
+        if ($validated['is_published'] && !$article->published_at) {
+            $validated['published_at'] = now();
+        }
         
         $article->update($validated);
 

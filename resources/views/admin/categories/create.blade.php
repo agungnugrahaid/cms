@@ -25,6 +25,19 @@
                         </div>
 
                         <div>
+                            <x-input-label for="color" :value="__('Accent Color')" />
+                            <select id="color" name="color" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                                <option value="blue" {{ old('color') == 'blue' ? 'selected' : '' }}>Blue (Information)</option>
+                                <option value="red" {{ old('color') == 'red' ? 'selected' : '' }}>Red (Incident)</option>
+                                <option value="yellow" {{ old('color') == 'yellow' ? 'selected' : '' }}>Yellow (Maintenance)</option>
+                                <option value="emerald" {{ old('color') == 'emerald' ? 'selected' : '' }}>Emerald (Success/Normal)</option>
+                                <option value="purple" {{ old('color') == 'purple' ? 'selected' : '' }}>Purple (Security)</option>
+                                <option value="orange" {{ old('color') == 'orange' ? 'selected' : '' }}>Orange (Warning)</option>
+                            </select>
+                            <x-input-error class="mt-2" :messages="$errors->get('color')" />
+                        </div>
+
+                        <div>
                             <x-input-label for="description" :value="__('Description')" />
                             <x-text-input id="description" name="description" type="text" class="mt-1 block w-full" :value="old('description')" />
                             <x-input-error class="mt-2" :messages="$errors->get('description')" />
