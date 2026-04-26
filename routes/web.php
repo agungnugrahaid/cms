@@ -39,7 +39,12 @@ Route::resource('categories', CategoryController::class);
 Route::resource('articles', ArticleController::class);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $stats = [
+        'pages' => \App\Models\Page::count(),
+        'categories' => \App\Models\Category::count(),
+        'articles' => \App\Models\Article::count(),
+    ];
+    return view('dashboard', compact('stats'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
