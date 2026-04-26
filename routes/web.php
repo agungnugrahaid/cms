@@ -3,11 +3,13 @@
 // use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('public.home');
+    $page = \App\Models\Page::where('slug', 'home')->first();
+    return view('public.home', compact('page'));
 });
 
 Route::get('/about', function () {
-    return view('public.about');
+    $page = \App\Models\Page::where('slug', 'about')->first();
+    return view('public.about', compact('page'));
 });
 
 Route::get('/status', function () {

@@ -15,11 +15,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::firstOrCreate(
+            ['email' => 'test@example.com'],
+            ['name' => 'Test User', 'password' => bcrypt('password')]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        \App\Models\Page::firstOrCreate(
+            ['slug' => 'home'],
+            ['title' => 'GMEDIA Network Operations Center', 'content' => 'Delivering 24/7 monitoring, incident management, and infrastructure resilience to ensure uninterrupted global connectivity.']
+        );
+        \App\Models\Page::firstOrCreate(
+            ['slug' => 'about'],
+            ['title' => 'NOC Overview & Capabilities', 'content' => 'The core of our infrastructure resilience. Discover how GMEDIA\'s Network Operation Center maintains absolute uptime through rigorous monitoring, rapid incident response, and strict SLA compliance.']
+        );
+
+        $catNews = \App\Models\Category::firstOrCreate(['slug' => 'news'], ['name' => 'News']);
+        $catMaintenance = \App\Models\Category::firstOrCreate(['slug' => 'maintenance'], ['name' => 'Maintenance']);
+        $catIncident = \App\Models\Category::firstOrCreate(['slug' => 'incident'], ['name' => 'Incident']);
+
+        \App\Models\Article::factory(10)->create(['category_id' => $catNews->id]);
+        \App\Models\Article::factory(5)->create(['category_id' => $catMaintenance->id]);
+        \App\Models\Article::factory(5)->create(['category_id' => $catIncident->id]);
     }
 }

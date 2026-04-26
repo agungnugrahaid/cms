@@ -28,12 +28,12 @@
             
             <!-- Headline -->
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6 leading-tight drop-shadow-md">
-                GMEDIA Network Operations Center
+                {{ $page->title ?? 'GMEDIA Network Operations Center' }}
             </h1>
             
             <!-- Subtext -->
             <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl font-body-lg drop-shadow">
-                Delivering 24/7 monitoring, incident management, and infrastructure resilience to ensure uninterrupted global connectivity.
+                {{ $page->content ?? 'Delivering 24/7 monitoring, incident management, and infrastructure resilience to ensure uninterrupted global connectivity.' }}
             </p>
             
             <!-- CTA -->

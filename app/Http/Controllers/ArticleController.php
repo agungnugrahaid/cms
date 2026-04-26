@@ -12,7 +12,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('articles.index');
+        $articles = \App\Models\Article::with('category')->orderBy('published_at', 'desc')->paginate(10);
+        return view('articles.index', compact('articles'));
     }
 
     /**

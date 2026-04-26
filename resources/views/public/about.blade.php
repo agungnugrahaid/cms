@@ -6,9 +6,9 @@
 <main class="flex-grow w-full max-w-[1440px] mx-auto px-6 lg:px-12 py-12">
     <!-- Page Header -->
     <div class="mb-12 border-b border-outline-variant pb-6">
-        <h1 class="font-h1 text-h1 text-on-background">NOC Overview &amp; Capabilities</h1>
+        <h1 class="font-h1 text-h1 text-on-background">{{ $page->title ?? 'NOC Overview & Capabilities' }}</h1>
         <p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-3xl">
-            The core of our infrastructure resilience. Discover how GMEDIA's Network Operation Center maintains absolute uptime through rigorous monitoring, rapid incident response, and strict SLA compliance.
+            {{ $page->content ?? "The core of our infrastructure resilience. Discover how GMEDIA's Network Operation Center maintains absolute uptime through rigorous monitoring, rapid incident response, and strict SLA compliance." }}
         </p>
     </div>
     
