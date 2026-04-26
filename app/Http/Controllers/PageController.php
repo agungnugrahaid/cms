@@ -45,7 +45,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        return view('admin.pages.edit', compact('page'));
     }
 
     /**
@@ -53,14 +53,15 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        //
-    }
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'meta_title' => 'nullable|max:255',
+            'meta_description' => 'nullable|max:500',
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Page $page)
-    {
-        //
+        $page->update($validated);
+
+        return redirect()->route('pages.index')->with('success', 'Page updated successfully.');
     }
 }

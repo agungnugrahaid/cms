@@ -53,6 +53,13 @@
 
             <!-- Page Content -->
             <main>
+                @if (session('success'))
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+                        <div class="bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-400 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">{{ session('success') }}</span>
+                        </div>
+                    </div>
+                @endif
                 {{ $slot }}
             </main>
         </div>

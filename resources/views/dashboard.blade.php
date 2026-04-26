@@ -36,7 +36,7 @@
                         <div class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Articles</div>
                         <div class="mt-2 flex items-baseline justify-between">
                             <div class="text-3xl font-bold text-gray-900 dark:text-white">{{ $stats['articles'] }}</div>
-                            <a href="{{ route('articles.index') }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">View All</a>
+                            <a href="{{ route('admin.articles.index') }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">View All</a>
                         </div>
                     </div>
                 </div>
