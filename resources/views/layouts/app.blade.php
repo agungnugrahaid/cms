@@ -181,10 +181,20 @@
                     <span class="material-symbols-outlined dark:hidden" style="font-size: 20px;">dark_mode</span>
                     <span class="material-symbols-outlined hidden dark:inline" style="font-size: 20px;">light_mode</span>
                 </button>
+                
                 <span class="hidden lg:flex font-['Inter'] antialiased text-sm font-medium text-blue-800 dark:text-blue-400 items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span>Network Status</span>
                 </span>
+
+                <!-- Authentication -->
+                <div class="hidden sm:flex items-center gap-2 border-l border-slate-200 dark:border-slate-800 pl-4 ml-2">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="font-['Inter'] antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 px-2 py-1 rounded-md transition-all duration-200">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="font-['Inter'] antialiased text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 px-2 py-1 rounded-md transition-all duration-200">Login</a>
+                    @endauth
+                </div>
                 
                 <!-- Hamburger Button -->
                 <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all duration-200 p-2 rounded-md flex items-center justify-center">
@@ -200,6 +210,17 @@
                 <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md {{ request()->is('about') ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400' : '' }}" href="{{ url('/about') }}">About</a>
                 <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md {{ request()->is('articles*') ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400' : '' }}" href="{{ url('/articles') }}">Updates</a>
                 <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md {{ request()->is('contact') ? 'bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-400' : '' }}" href="{{ url('/contact') }}">Contact</a>
+                
+                <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+                    @auth
+                        <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md" href="{{ url('/dashboard') }}">Dashboard</a>
+                    @else
+                        <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md" href="{{ route('login') }}">Login</a>
+                        @if (Route::has('register'))
+                            <a class="flex items-center p-3 font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md" href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
                 
                 <div class="pt-4 mt-2 border-t border-slate-200 dark:border-slate-800 flex justify-center">
                     <span class="font-['Inter'] antialiased text-sm font-medium text-blue-800 dark:text-blue-400 flex items-center justify-center gap-1.5 px-3 py-2 rounded-md bg-surface-container-low border border-outline-variant w-full">
