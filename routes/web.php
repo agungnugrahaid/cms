@@ -49,6 +49,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
             'pages' => \App\Models\Page::count(),
             'categories' => \App\Models\Category::count(),
             'articles' => \App\Models\Article::count(),
+            'articles_published' => \App\Models\Article::where('is_published', true)->count(),
+            'articles_draft' => \App\Models\Article::where('is_published', false)->count(),
         ];
         return view('dashboard', compact('stats'));
     })->name('dashboard');

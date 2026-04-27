@@ -20,6 +20,7 @@
                                 <tr class="border-b border-gray-200 dark:border-gray-700">
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Name</th>
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Slug</th>
+                                    <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Color</th>
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Articles</th>
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400 text-right">Actions</th>
                                 </tr>
@@ -32,6 +33,12 @@
                                     </td>
                                     <td class="py-4 px-4 text-sm text-gray-500 dark:text-gray-400">
                                         {{ $category->slug }}
+                                    </td>
+                                    <td class="py-4 px-4 text-sm">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-4 h-4 rounded-full bg-{{ $category->color ?? 'blue' }}-500 shadow-sm"></span>
+                                            <span class="capitalize text-gray-600 dark:text-gray-400">{{ $category->color ?? 'blue' }}</span>
+                                        </div>
                                     </td>
                                     <td class="py-4 px-4 text-sm">
                                         <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md text-xs font-medium">

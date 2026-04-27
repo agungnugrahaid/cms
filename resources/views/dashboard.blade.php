@@ -38,6 +38,16 @@
                             <div class="text-3xl font-bold text-gray-900 dark:text-white">{{ $stats['articles'] }}</div>
                             <a href="{{ route('admin.articles.index') }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">View All</a>
                         </div>
+                        <div class="mt-4 flex gap-4 border-t border-gray-50 dark:border-gray-700 pt-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <span class="text-xs text-gray-600 dark:text-gray-400">{{ $stats['articles_published'] }} Published</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                <span class="text-xs text-gray-600 dark:text-gray-400">{{ $stats['articles_draft'] }} Draft</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
