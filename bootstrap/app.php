@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         Yajra\Oci8\Oci8ServiceProvider::class,
     ])
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

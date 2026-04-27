@@ -12,7 +12,7 @@ services:
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
-            - '${APP_PORT:-80}:80'
+            - '8000:80'
             - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         environment:
             WWWUSER: '${WWWUSER}'
@@ -24,6 +24,7 @@ services:
             - '.:/var/www/html'
         networks:
             - sail
+            - proxy-nw
         depends_on:
             - oracle
             - mysql
@@ -132,6 +133,8 @@ services:
 networks:
     sail:
         driver: bridge
+    proxy-nw:
+        external: true
 volumes:
     sail-mysql:
         driver: local
