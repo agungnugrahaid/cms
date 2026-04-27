@@ -21,6 +21,7 @@
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Title</th>
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Category</th>
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Status</th>
+                                    <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Views</th>
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Published</th>
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400 text-right">Actions</th>
                                 </tr>
@@ -49,6 +50,11 @@
                                                 Draft
                                             </span>
                                         @endif
+                                    <td class="py-4 px-4 text-sm text-gray-600 dark:text-gray-300">
+                                        <div class="flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[16px]">visibility</span>
+                                            {{ number_format($article->views ?? 0) }}
+                                        </div>
                                     </td>
                                     <td class="py-4 px-4 text-sm text-gray-500 dark:text-gray-400">
                                         {{ $article->published_at ? $article->published_at->format('M d, Y') : '-' }}

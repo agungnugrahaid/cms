@@ -89,6 +89,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        // Increment the view count
+        $article->increment('views');
+        
         return view('articles.show', compact('article'));
     }
 

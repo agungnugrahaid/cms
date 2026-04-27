@@ -17,6 +17,7 @@ class Article extends Model
         'featured_image',
         'is_published',
         'published_at',
+        'views',
     ];
 
     protected $casts = [
