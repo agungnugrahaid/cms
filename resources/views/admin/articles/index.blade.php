@@ -15,7 +15,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg border border-gray-100 dark:border-gray-700">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
+                        <table id="articles-table" class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="border-b border-gray-200 dark:border-gray-700">
                                     <th class="py-4 px-4 text-sm font-semibold text-gray-600 dark:text-gray-400">Title</th>
@@ -73,12 +73,111 @@
                             </tbody>
                         </table>
                     </div>
-                    
-                    <div class="mt-6">
-                        {{ $articles->links() }}
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- DataTables Styling and Integration -->
+    <link href="https://cdn.datatables.net/2.0.8/css/dataTables.tailwindcss.css" rel="stylesheet">
+    <style>
+        /* Custom Premium Dark Mode/NOC Aesthetic overrides for DataTables */
+        .dt-container {
+            padding: 1rem 0;
+        }
+        .dt-layout-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .dt-search input {
+            background-color: #f9fafb !important;
+            border-color: #e5e7eb !important;
+            color: #111827 !important;
+            border-radius: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.875rem !important;
+            transition: all 0.2s;
+        }
+        .dark .dt-search input {
+            background-color: #1f2937 !important;
+            border-color: #374151 !important;
+            color: #f9fafb !important;
+        }
+        .dt-search input:focus {
+            outline: none !important;
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+        }
+        .dt-length select {
+            background-color: #f9fafb !important;
+            border-color: #e5e7eb !important;
+            color: #111827 !important;
+            border-radius: 0.5rem !important;
+            padding: 0.5rem 2rem 0.5rem 1rem !important;
+            font-size: 0.875rem !important;
+        }
+        .dark .dt-length select {
+            background-color: #1f2937 !important;
+            border-color: #374151 !important;
+            color: #f9fafb !important;
+        }
+        .dt-paging {
+            display: flex;
+            gap: 0.25rem;
+        }
+        .dt-paging-button {
+            padding: 0.5rem 0.875rem !important;
+            border-radius: 0.375rem !important;
+            font-size: 0.875rem !important;
+            font-weight: 500 !important;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .dt-paging-button.current {
+            background-color: #2563eb !important;
+            color: white !important;
+        }
+        .dt-paging-button:hover:not(.current):not(.disabled) {
+            background-color: #f3f4f6 !important;
+        }
+        .dark .dt-paging-button:hover:not(.current):not(.disabled) {
+            background-color: #374151 !important;
+        }
+        .dt-info {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        .dark .dt-info {
+            color: #9ca3af;
+        }
+    </style>
+
+    <!-- DataTables Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#articles-table').DataTable({
+                columnDefs: [
+                    { orderable: false, targets: 5 } // Actions column is not orderable
+                ],
+                order: [[4, 'desc']], // Sort by 'Published' column by default
+                pageLength: 10,
+                lengthMenu: [5, 10, 25, 50, 100],
+                language: {
+                    search: "Search:",
+                    lengthMenu: "Show _MENU_ entries",
+                    info: "Showing _START_ to _END_ of _TOTAL_ articles",
+                    infoEmpty: "Showing 0 to 0 of 0 articles",
+                    infoFiltered: "(filtered from _MAX_ total articles)",
+                    zeroRecords: "No matching articles found"
+                }
+            });
+        });
+    </script>
 </x-app-layout>
